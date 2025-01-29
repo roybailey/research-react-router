@@ -1,6 +1,6 @@
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "~/components/ui/tabs";
 import type { Route } from "./+types/editor";
-import React, {useEffect} from "react";
+import React, {type ChangeEvent, type ChangeEventHandler, type ReactEventHandler, useEffect} from "react";
 import {Textarea} from "~/components/ui/textarea";
 import {Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow} from "~/components/ui/table";
 import {useTableStore} from "~/store/tableStore";
@@ -17,6 +17,7 @@ export default function Editor() {
     const {
         data,
         setTable,
+        getTable,
     } = useTableStore()
 
     useEffect(() => {
@@ -24,12 +25,16 @@ export default function Editor() {
         console.log(`Table data: ${data}`)
     }, [data])
 
-    const value = {
-        data,
-        setTable: (data: string) => {
-            setTable(data)
-        },
-    }
+    // const value = {
+    //     data,
+    //     setTable: (data: string) => {
+    //         setTable(data)
+    //     },
+    // }
+
+    const handleDataChange = (evt:ChangeEvent<HTMLTextAreaElement>) => {
+        setTable(evt.target.value);
+    };
 
     return (
         <div>
@@ -39,26 +44,28 @@ export default function Editor() {
                     <TabsTrigger value="preview">Preview</TabsTrigger>
                 </TabsList>
                 <TabsContent value="editor">
-                    <Textarea value={data} className="w-full h-40 resize-none overflow-auto border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white h-[48rem]" />
+                    <Textarea value={data} className="w-full h-40 resize-none overflow-auto border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white h-[48rem]"
+                              onChange={handleDataChange}
+                    />
                 </TabsContent>
                 <TabsContent value="preview">
                     <Table>
-                        <TableCaption>Data Table</TableCaption>
+                        <TableCaption>Data Table huh</TableCaption>
                         <TableHeader>
                             <TableRow>
-                                <TableHead>Invoice</TableHead>
-                                <TableHead>Status</TableHead>
-                                <TableHead>Method</TableHead>
-                                <TableHead>Amount</TableHead>
+                                {getTable()[0].map(heading=> (
+                                    <TableHead>{heading}</TableHead>
+                                ))}
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            <TableRow>
-                                <TableCell className="font-medium">INV001</TableCell>
-                                <TableCell>Paid</TableCell>
-                                <TableCell>Credit Card</TableCell>
-                                <TableCell className="text-right">$250.00</TableCell>
-                            </TableRow>
+                            {getTable().splice(1).map(row=> (
+                                <TableRow>
+                                    {row.map(column => (
+                                        <TableCell className="font-medium">{column}</TableCell>
+                                    ))}
+                                </TableRow>
+                            ))}
                         </TableBody>
                     </Table>
                 </TabsContent>

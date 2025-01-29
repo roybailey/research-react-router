@@ -1,5 +1,6 @@
 import {create} from "zustand";
 import {persist, createJSONStorage} from 'zustand/middleware'
+import React from "react";
 
 const KEY_TABLE_STATE = "TableState";
 
@@ -8,6 +9,7 @@ export type TableState = {
     data: string;
     // operations
     setTable: (data: string) => void;
+    getTable: () => string[][]
     // record input
 };
 
@@ -25,6 +27,13 @@ row-3-value-1,row-3-value-2,row-3-value-3,row-3-value-4,row-3-value-5,row-3-valu
                     data: data,
                 });
             },
+            getTable: () => {
+                let table:string[][] = []
+                get().data.split("\n").map((row, index)=>{
+                    table[index] = row.split(',')
+                })
+                return table
+            }
         }),
         {
             name: KEY_TABLE_STATE,
