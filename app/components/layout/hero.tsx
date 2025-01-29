@@ -68,8 +68,8 @@ export const Hero = () => {
                         </p>
                     </div>
                     <div className="flex flex-row gap-3">
-                        <Link to="/sign-up" target="_blank" className="flex flex-row items-center">
-                            <Button variant="default" size="lg">Sign Up </Button>
+                        <Link to="/editor" target="_blank" className="flex flex-row items-center">
+                            <Button variant="default" size="lg">Editor </Button>
                         </Link>
                     </div>
                 </div>

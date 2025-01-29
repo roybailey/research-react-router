@@ -1,6 +1,8 @@
 import type { Route } from "./+types/home";
 import {Hero} from "~/components/layout/hero";
 import React from "react";
+import {Feature} from "~/components/layout/feature";
+import {Pricing} from "~/components/layout/pricing";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -13,6 +15,8 @@ export default function Home() {
   return (
     <div>
       <Hero />
+      <Feature />
+      <Pricing />
     </div>
   );
 }
