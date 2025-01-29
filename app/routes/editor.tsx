@@ -22,7 +22,6 @@ export default function Editor() {
 
     useEffect(() => {
         console.log(`Table data: ${data}`)
-        console.log(`Table data: ${data}`)
     }, [data])
 
     // const value = {
