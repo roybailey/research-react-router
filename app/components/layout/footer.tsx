@@ -1,60 +1,62 @@
-import {Link} from "react-router";
+import { Link } from 'react-router'
 
 export const Footer = () => {
     const navigationItems = [
         {
-            title: "Information",
-            href: "",
-            target: "",
-            description: "Research Software Development",
+            title: 'Information',
+            href: '',
+            target: '',
+            description: 'Research Software Development',
             items: [
                 {
-                    title: "About us",
-                    href: "https://roybailey.biz",
-                    target: "_blank",
+                    title: 'About us',
+                    href: 'https://roybailey.biz',
+                    target: '_blank',
                 },
             ],
         },
-    ];
+    ]
 
     return (
         <div className="w-full pt-10 pb-20">
             <div className="container mx-auto px-4">
-                <div className="grid sm:grid-cols-2 gap-10 items-top justify-center">
-                    <div className="flex gap-8 flex-col items-start">
-                        <div className="flex gap-2 flex-col">
-                            <h2 className="text-3xl md:text-5xl tracking-tighter max-w-xl font-regular text-left">
+                <div className="items-top grid justify-center gap-10 sm:grid-cols-2">
+                    <div className="flex flex-col items-start gap-8">
+                        <div className="flex flex-col gap-2">
+                            <h2 className="font-regular max-w-xl text-left text-3xl tracking-tighter md:text-5xl">
                                 Roy Bailey
                             </h2>
-                            <p className="text-lg max-w-lg leading-relaxed tracking-tight text-foreground/75 text-left">
+                            <p className="text-foreground/75 max-w-lg text-left text-lg leading-relaxed tracking-tight">
                                 Research Project
                             </p>
                         </div>
-                        <div className="flex gap-20 flex-row">
-                            <div className="flex flex-col text-sm max-w-lg leading-relaxed tracking-tight text-foreground/75 text-left">
+                        <div className="flex flex-row gap-20">
+                            <div className="text-foreground/75 flex max-w-lg flex-col text-left text-sm leading-relaxed tracking-tight">
                                 <p>London</p>
                                 <p>United Kingdom</p>
                             </div>
-                            <div className="flex flex-col text-sm max-w-lg leading-relaxed tracking-tight text-foreground/75 text-left">
+                            <div className="text-foreground/75 flex max-w-lg flex-col text-left text-sm leading-relaxed tracking-tight">
                                 <Link to="/terms">Terms of service</Link>
                                 <Link to="/privacy">Privacy Policy</Link>
                             </div>
                         </div>
                     </div>
-                    <div className="flex flex-col md:flex-row gap-10 items-start justify-end">
+                    <div className="flex flex-col items-start justify-end gap-10 md:flex-row">
                         {navigationItems.map((item) => (
                             <div
                                 key={item.title}
-                                className="flex text-base gap-1 flex-col items-start"
+                                className="flex flex-col items-start gap-1 text-base"
                             >
                                 <div className="flex flex-col gap-2">
                                     {item.href ? (
                                         <Link
                                             to={item.href}
                                             target={item.target}
-                                            className="flex justify-between md:justify-end items-center"
+                                            className="flex items-center justify-between md:justify-end"
                                         >
-                                            <span className="text-xl">{item.title}</span>
+                                            <span className="text-xl">
+                                                {item.title}
+                                            </span>
                                         </Link>
                                     ) : (
                                         <p className="text-xl">{item.title}</p>
@@ -65,11 +67,11 @@ export const Footer = () => {
                                                 key={subItem.title}
                                                 to={subItem.href}
                                                 target={subItem.target}
-                                                className="flex justify-between md:justify-end items-center"
+                                                className="flex items-center justify-between md:justify-end"
                                             >
-                        <span className="text-foreground/75">
-                          {subItem.title}
-                        </span>
+                                                <span className="text-foreground/75">
+                                                    {subItem.title}
+                                                </span>
                                             </Link>
                                         ))}
                                 </div>
@@ -79,5 +81,5 @@ export const Footer = () => {
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}

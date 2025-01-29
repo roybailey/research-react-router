@@ -1,16 +1,17 @@
-import {Link} from "react-router";
+import { Link } from 'react-router'
 
 interface LogoProps {
-    href?: string|undefined,
+    href?: string | undefined
 }
 
-export const Logo = ({ href }:LogoProps) => {
-
+export const Logo = ({ href }: LogoProps) => {
     return (
         <Link to={href || '/'}>
-            <div className="flex border-1 font-semibold text-2xl shadow-sm shadow-primary border-primary rounded-l-full rounded-r-full">
-                <span className="bg-foreground text-background px-4 py-2 rounded-l-full rounded-r-full">RESEARCH-REACT-ROUTER</span>
+            <div className="shadow-primary border-primary flex rounded-l-full rounded-r-full border-1 text-2xl font-semibold shadow-sm">
+                <span className="bg-foreground text-background rounded-l-full rounded-r-full px-4 py-2">
+                    RESEARCH-REACT-ROUTER
+                </span>
             </div>
         </Link>
-    );
-};
+    )
+}
