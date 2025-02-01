@@ -24,10 +24,10 @@ export const Footer = () => {
                     <div className="flex flex-col items-start gap-8">
                         <div className="flex flex-col gap-2">
                             <h2 className="font-regular max-w-xl text-left text-3xl tracking-tighter md:text-5xl">
-                                Roy Bailey
+                                Research React Router
                             </h2>
                             <p className="text-foreground/75 max-w-lg text-left text-lg leading-relaxed tracking-tight">
-                                Research Project
+                                React Web Framework
                             </p>
                         </div>
                         <div className="flex flex-row gap-20">
